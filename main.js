@@ -11,6 +11,16 @@ $(function () {
        objPeldany.setHatterszin();
        TODOLIST2[objPeldany.index].kesz=true;
        console.log(TODOLIST2);
+       szuloELEM.empty();
+       new Megjelenit(TODOLIST2, szuloELEM);
+    })
+    $(window).on("megse",(event)=>{
+        let objPeldany = event.detail;
+       objPeldany.resetHatterszin();
+       delete TODOLIST2[objPeldany.index].kesz;
+       console.log(TODOLIST2);
+       szuloELEM.empty();
+       new Megjelenit(TODOLIST2, szuloELEM);
     })
     $(window).on("torles",(event)=>{
         let objPeldany = event.detail;

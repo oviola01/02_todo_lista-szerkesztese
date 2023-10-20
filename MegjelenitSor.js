@@ -22,6 +22,11 @@ class MegjelenitSor {
             //console.log(this); 
             this.#esemenyTrigger("kesz");
         });
+        this.megseElem.on("click", () => {
+            //this az maga a megfogott objektum
+            //console.log(this); 
+            this.#esemenyTrigger("megse");
+        });
         this.torolElem.on("click", () => {
             //console.log(this);
             this.#esemenyTrigger("torles");
@@ -32,6 +37,10 @@ class MegjelenitSor {
         this.sorElem.css("background-color", "green");
     }
 
+    resetHatterszin(){
+        this.sorElem.removeAttr("background-color");
+    }
+
     #sor() {
         let txt = "";
         txt += "<tr>";
@@ -40,7 +49,13 @@ class MegjelenitSor {
                 txt += `<td>${this.#adat[key]}</td>`;
             }
           }
-        txt += `<td><span class="kesz">✔️</span> <span class="megse">X</span> <span class="torol">🗑</span></td>`;
+        txt += `<td>`;
+        if(this.#adat.kesz){
+            txt += `<span class="megse">❌</span> `;
+        } else {
+            txt += `<span class="kesz">✔️</span> `;
+        }
+        txt += `<span class="torol">🗑</span></td>`;
         txt += "</tr>";
         this.tablaElem.append(txt);
     }
